@@ -1,4 +1,4 @@
-NAME = Zombie
+NAME = BraiiiiiiinnnzzzZ
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
