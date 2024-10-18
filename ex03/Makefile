@@ -3,8 +3,8 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
-$(NAME): Makefile main.cpp Weapon.cpp HumanA.cpp HumanB.cpp                                 
-	$(CXX) $(CXXFLAGS) -o $(NAME)  Makefile main.cpp Weapon.cpp HumanA.cpp HumanB.cpp                                 
+$(NAME): main.cpp Weapon.cpp HumanA.cpp HumanB.cpp                                 
+	$(CXX) $(CXXFLAGS) -o $(NAME)  main.cpp Weapon.cpp HumanA.cpp HumanB.cpp                                 
 
 clean:
 	rm -f $(NAME)
