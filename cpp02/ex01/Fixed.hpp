@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deniseerjavec <deniseerjavec@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/10/18 15:05:54 by deniseerjav      ###   ########.fr       */
+/*   Updated: 2024/10/29 10:53:51 by deniseerjav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_H
-#define HUMANB_H
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
-#include "Weapon.hpp"
-// #include <string>
-// #include <iostream>
+#include <iostream>
+#include <cmath>
 
-class HumanB
+class Fixed
 {
-     private :
-          std::string name;
-          Weapon    *weapon;
-          
-     public :    
-          HumanB(std::string name);
-          void      setWeapon(Weapon &weapon);
-          void  attack() const;
+private:
+    int point_value;
+    static const int fract_bits = 8;
+
+public:
+    Fixed();
+    Fixed(const int num);
+    Fixed(const float num);
+    ~Fixed();
+    Fixed(const Fixed& obj);
+    Fixed& operator=(const Fixed& obj);
+    float toFloat( void ) const;
+    int toInt( void ) const;
+    int getRawBits(void) const;
+    void setRawBits(int const raw);
 };
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 #endif
