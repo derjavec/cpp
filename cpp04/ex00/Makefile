@@ -1,4 +1,4 @@
-NAME = fixed
+NAME = Polymorphism
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -11,9 +11,9 @@ PASTEL_LILAC = \033[38;5;183m
 
 all: $(NAME)
 
-$(NAME): main.cpp Fixed.cpp Point.cpp bsp.cpp
+$(NAME): main.cpp Polymorphism.cpp 
 	@echo "$(PASTEL_BLUE)Compiling sources... ⏳$(RESET)"
-	@$(CXX) $(CXXFLAGS) -o $(NAME) main.cpp Fixed.cpp Point.cpp bsp.cpp
+	@$(CXX) $(CXXFLAGS) -o $(NAME) main.cpp Polymorphism.cpp
 	@echo "$(PASTEL_GREEN)Build complete! 🎉 Executable created: $(NAME)$(RESET)"
 
 clean:
