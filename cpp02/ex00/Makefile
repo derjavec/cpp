@@ -1,4 +1,4 @@
-NAME = harlFilter
+NAME = fixed
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -11,9 +11,9 @@ PASTEL_LILAC = \033[38;5;183m
 
 all: $(NAME)
 
-$(NAME): main.cpp Harl.cpp 
+$(NAME): main.cpp Fixed.cpp
 	@echo "$(PASTEL_BLUE)Compiling sources... ⏳$(RESET)"
-	@$(CXX) $(CXXFLAGS) -o $(NAME) main.cpp Harl.cpp 
+	@$(CXX) $(CXXFLAGS) -o $(NAME) main.cpp Fixed.cpp
 	@echo "$(PASTEL_GREEN)Build complete! 🎉 Executable created: $(NAME)$(RESET)"
 
 clean:
@@ -27,3 +27,4 @@ fclean: clean
 
 re: fclean all
 	@echo "$(PASTEL_BLUE)Rebuilt everything from scratch! 🔄🚀$(RESET)"
+

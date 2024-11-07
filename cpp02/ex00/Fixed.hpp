@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/07 12:44:09 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/10/25 10:56:43 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-#define POINT_HPP
+#ifndef FIXED_H
+#define FIXED_H
 
-#include "Fixed.hpp"
+#include <iostream>
 
-class Point
+class Fixed
 {
-private:
-    const Fixed x;
-    const Fixed y;
-
-public:
-    Point();
-    Point(const float num1, const float num2);
-    ~Point();
-    Point(const Point& obj);
-    Fixed   getX(void) const;
-    Fixed   getY(void) const;
+     private:
+          int  point_value;
+          static const int    fract_bits = 8;
+     public:
+          Fixed();
+          ~Fixed();
+          Fixed(const Fixed& obj);
+          Fixed& operator = (const Fixed& obj);
+          int getRawBits( void ) const;
+          void setRawBits( int const raw );
 };
-Fixed area(Point const& p1, Point const& p2, Point const& p3);
-bool bsp( Point const a, Point const b, Point const c, Point const point);
+
 #endif

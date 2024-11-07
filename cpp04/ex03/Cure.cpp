@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/07 12:44:09 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:59:24 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-#define POINT_HPP
+#include "Interface.hpp"
 
-#include "Fixed.hpp"
-
-class Point
+Cure::Cure()
 {
-private:
-    const Fixed x;
-    const Fixed y;
+    type = "cure";
+}
 
-public:
-    Point();
-    Point(const float num1, const float num2);
-    ~Point();
-    Point(const Point& obj);
-    Fixed   getX(void) const;
-    Fixed   getY(void) const;
-};
-Fixed area(Point const& p1, Point const& p2, Point const& p3);
-bool bsp( Point const a, Point const b, Point const c, Point const point);
-#endif
+Cure::~Cure(){}
+
+Cure::Cure(const Cure& obj)
+{
+    *this = obj;
+}
+
+Cure& Cure::operator=(const Cure& other)
+{
+    if (this != &other)
+    {
+     type = other.type;
+    }
+    return (*this);
+}
+
+Cure* Cure::clone() const
+{
+    Cure *new_cure =  new Cure();
+    return (new_cure);
+}
+
+void Cure::use(ICharacter& target)
+{
+    std::cout << "* heals " << target.getName() << "’s wounds *"<< std::endl;
+}
