@@ -6,11 +6,11 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/07 17:59:24 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:07:16 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Interface.hpp"
+#include "Cure.hpp"
 
 Cure::Cure()
 {

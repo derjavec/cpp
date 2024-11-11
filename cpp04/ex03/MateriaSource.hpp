@@ -6,14 +6,17 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/08 09:54:18 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:33:09 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATERIASOURCE_HPP
 #define MATERIASOURCE_HPP
 
-#include "Interface.hpp"
+#include "AMateria.hpp"
+#include "IMateriaSource.hpp"
+#include <string>
+#include <iostream>
 
 class MateriaSource : public IMateriaSource
 {

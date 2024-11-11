@@ -11,9 +11,9 @@ PASTEL_LILAC = \033[38;5;183m
 
 all: $(NAME)
 
-$(NAME): main.cpp Interface.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
+$(NAME): main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 	@echo "$(PASTEL_BLUE)Compiling sources... ⏳$(RESET)"
-	@$(CXX) $(CXXFLAGS) -o $(NAME) main.cpp Interface.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
+	@$(CXX) $(CXXFLAGS) -o $(NAME) main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 	@echo "$(PASTEL_GREEN)Build complete! 🎉 Executable created: $(NAME)$(RESET)"
 
 clean:

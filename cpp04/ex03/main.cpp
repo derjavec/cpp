@@ -6,11 +6,16 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/06 11:37:24 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:21:01 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Interface.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
+#include "ICharacter.hpp"
 
 int main()
 {

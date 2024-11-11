@@ -6,15 +6,18 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/08 10:59:27 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:32:01 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
-#include "Interface.hpp"
 #include "ICharacter.hpp"
+#include <string>
+#include <iostream>
+
+class ICharacter;
 
 class AMateria
 {

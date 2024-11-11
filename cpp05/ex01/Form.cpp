@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/08 15:18:29 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:24:18 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,15 @@ const char *Form::GradeTooLowException::what() const throw()
 
 void Form::beSigned(Bureaucrat& b)
 {
-     if (b.getGrade() <=_gradeSign)
+     if (b.getGrade() <= _gradeSign)
           _signed = 1;
      else
           throw GradeTooLowException();
+          
 }
 void Form::signForm(Bureaucrat& b)
 {
+     std::cout << _signed << std::endl;
      if (_signed == 1)
           std::cout << b.getName() << " signed " << _name << std::endl;
      else

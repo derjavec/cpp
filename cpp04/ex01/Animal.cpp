@@ -1,41 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Interface.cpp                                      :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/07 18:00:46 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:55:42 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Interface.hpp"
+#include "Animal.hpp"
 
-AMateria::AMateria(){}
-
-AMateria::~AMateria(){}
-
-AMateria::AMateria(const AMateria& obj)
+Animal::Animal() : type("Animal") 
 {
-    *this = obj;
+    std::cout << "The Animal default constructer has been called" << std::endl;
 }
 
-AMateria& AMateria::operator=(const AMateria& other)
+Animal::~Animal()
 {
-    if (this != &other)
+    std::cout << "The Animal default destructor has been called" << std::endl;
+}
+
+Animal::Animal(const Animal& obj) : type(obj.type)
+{
+    std::cout << "The Animal copy constructer has been called" << std::endl;
+
+}
+
+Animal& Animal::operator=(const Animal& obj)
+{
+    if (this != &obj)
     {
-     type = other.type;
+        type = obj.type;
     }
     return (*this);
 }
 
-void AMateria::use(ICharacter& target)
+void Animal::makeSound() const
 {
-    std::cout << "* shoots a default material at " << target.getName() << "*"<< std::endl;
+    std::cout << "Some animal makes a generic sound" << std::endl;
 }
 
-std::string const & AMateria::getType() const
+std::string Animal::getType() const
 {
     return (type);
 }
+

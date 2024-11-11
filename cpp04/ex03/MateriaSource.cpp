@@ -6,11 +6,11 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/07 18:00:59 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:08:08 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Interface.hpp"
+#include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource()
 {

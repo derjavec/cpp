@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/08 14:57:59 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:22:03 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Form
           const std::string _name;
           const int    _gradeSign;
           const int    _gradeExecute;
-          int    _signed;
+          bool    _signed;
     public:
           Form();
           Form(std::string name, int gradeSign, int gradeExecute);
