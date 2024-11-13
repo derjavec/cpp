@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/11 10:24:18 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:41:19 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 Form::Form():_name("") , _gradeSign(0), _gradeExecute(0), _signed(0){}
 
-Form::Form(std::string name, int gradeSign, int gradeExecute) : _name(name), _gradeSign(gradeSign), _gradeExecute(gradeExecute){}
+Form::Form(std::string name, int gradeSign, int gradeExecute) : _name(name), _gradeSign(gradeSign), _gradeExecute(gradeExecute)
+{
+     if (gradeSign > 150 || gradeExecute > 150)
+     {
+          throw GradeTooLowException();
+     }     
+     else if (gradeSign < 1 || gradeExecute < 1)
+     {
+          throw GradeTooHighException();
+     }
+          
+}
 Form::~Form(){}
 Form::Form(const Form& obj): _gradeSign(obj._gradeSign), _gradeExecute(obj._gradeExecute)
 {
@@ -58,6 +69,16 @@ void Form::signForm(Bureaucrat& b)
 const std::string    Form::getName() const
 {
      return (_name);
+}
+
+int   Form::getGradeSign() const
+{
+     return (_gradeSign);
+}
+
+int   Form::getGradeExecute() const
+{
+     return (_gradeExecute);
 }
 
 std::ostream& operator<<(std::ostream& out, const Form& f)

@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/11 14:03:06 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:41:41 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class AForm
           const int    _gradeSign;
           const int    _gradeExecute;
           bool    _signed;
-    public:
           AForm();
+    public:
           AForm(std::string name, int gradeSign, int gradeExecute);
           virtual ~AForm();
           AForm(const AForm& obj);
@@ -50,6 +50,8 @@ class AForm
                     const char *what() const throw();
           };
           const std::string getName() const;
+          int getGradeSign() const;
+          int getGradeExecute() const;
           virtual void execute(Bureaucrat const & executor) const = 0;
 };
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat);

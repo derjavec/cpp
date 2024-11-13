@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/11 10:22:03 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:40:56 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Form
           const int    _gradeSign;
           const int    _gradeExecute;
           bool    _signed;
-    public:
           Form();
+    public:
           Form(std::string name, int gradeSign, int gradeExecute);
           ~Form();
           Form(const Form& obj);
@@ -42,6 +42,8 @@ class Form
                     const char *what() const throw();
           };
           const std::string getName() const;
+          int getGradeSign() const;
+          int getGradeExecute() const;
 };
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& Bureaucrat);
 #endif

@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:03:14 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/11 15:41:19 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:46:40 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ Intern& Intern::operator=(const Intern& obj)
      return (*this);
 }
 
+const char *Intern::UnknownName::what() const throw()
+{
+     return ("Form name doesn't exists");
+}
+
 AForm *Intern::makeForm(std::string name, std::string target)
 {
      AForm *form = NULL;
@@ -34,8 +39,8 @@ AForm *Intern::makeForm(std::string name, std::string target)
           form = new RobotomyRequestForm(target);
      else if (name == "PresidentialPardonForm")
           form = new PresidentialPardonForm(target);
-     else
-          std::cout << "Form name doesn't exists" << std::endl;
+     else 
+          throw UnknownName();
      if (form)
           std::cout << "Intern creates " << name << std::endl;
      return (form);  

@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/11 14:03:21 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:36:59 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
 #include "AForm.hpp"
 
 class AForm;
@@ -24,8 +25,9 @@ class Bureaucrat
     private :
         const std::string _name;
         int    _grade;
-    public:
         Bureaucrat();
+    public:
+        
         Bureaucrat(std:: string name, int grade);
         ~Bureaucrat();
         Bureaucrat(const Bureaucrat& obj);

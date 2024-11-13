@@ -6,14 +6,22 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/11 14:04:37 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/13 09:40:47 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat():_name("") , _grade(0){}
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade){}
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
+{
+     if (grade > 0 && grade < 151)
+          _grade = grade;
+     else if (grade > 150)
+          throw GradeTooLowException();
+     else
+          throw GradeTooHighException();
+}
 Bureaucrat::~Bureaucrat(){}
 Bureaucrat::Bureaucrat(const Bureaucrat& obj)
 {
