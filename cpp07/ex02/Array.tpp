@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:37:38 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/13 14:59:50 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:45:56 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,17 @@ Array<T>::Array(unsigned int num): array(new T[num]()), n(num){}
 template<typename T>
 Array<T>::Array(const Array& obj)
 {
-     *this = obj;
+    n = obj.n;
+    if (n > 0)
+    {
+          array = new T[n]();
+          for (unsigned int i = 0; i < n; i++)
+          {
+               array[i] = obj.array[i];
+          }
+    }
+    else
+          array = NULL;
 }
 template<typename T>
 Array<T>& Array<T>::operator=(const Array& obj)
@@ -37,8 +47,14 @@ Array<T>& Array<T>::operator=(const Array& obj)
           delete[] array;
           n = obj.n;
           array = new T[n];
-          for (unsigned int i = 0; i < n; i++)
-               array[i] = obj.array[i];    
+          if (n > 0)
+          {
+               for (unsigned int i = 0; i < n; i++)
+                    array[i] = obj.array[i]; 
+          }
+          else
+               array = NULL;
+             
      }
      return (*this);
 }
