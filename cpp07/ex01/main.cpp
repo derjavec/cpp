@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:37:38 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/13 13:30:58 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:37:22 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char randomChar()
 {
      return ('a' + rand() % 26);
 }
-char randomNum()
+int randomNum()
 {
      return (rand() % 10);
 }

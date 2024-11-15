@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/12 11:41:58 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:16:33 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,18 @@ ScalarConvert& ScalarConvert::operator=(const ScalarConvert& obj)
      return (*this);
 }
 
+bool IsPrint(char c)
+{
+     if (c >= 32 && c <= 126)
+          return (true);
+     else
+          return (false);
+}
+
 void ScalarConvert::convert(const std::string str)
 {
      char charValue;
-     if (str.length() == 1 && std::isprint(str[0]))
+     if (str.length() == 1 && IsPrint(str[0]))
      {
           charValue = str[0];
           std::cout << "Char Value is : "<< charValue << std::endl;    

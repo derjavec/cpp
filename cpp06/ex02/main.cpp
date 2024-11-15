@@ -6,7 +6,7 @@
 /*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:37:38 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/12 14:46:38 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:34:47 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 Base *generate(void)
 {
      int n = std::rand() % 3;
-     std::cout << n << std::endl;
      Base * base;
 
      switch (n)
@@ -86,6 +85,7 @@ int main (void)
 {
      Base *base;
 
+     srand(time(0));
      base = generate();
      std::cout << "executing identify(Base *p) :" << std::endl;
      identify(base);
