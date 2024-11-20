@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: deniseerjavec <deniseerjavec@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:37:38 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/18 14:51:05 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:47:38 by deniseerjav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,26 @@ class BitcoinExchange
                     const char *what() const throw();
           };
           class InvalidData : public std::exception
+          {
+               public :
+                    const char *what() const throw();
+          };
+          class InvalidDate : public std::exception
+          {
+               private :
+                    std::string _date;
+                    std::string _message;
+               public :
+                    InvalidDate(const std::string& date) throw();
+                    virtual ~InvalidDate() throw();
+                    virtual const char *what() const throw();
+          };
+          class NegativeN : public std::exception
+          {
+               public :
+                    const char *what() const throw();
+          }; 
+          class BigN : public std::exception
           {
                public :
                     const char *what() const throw();

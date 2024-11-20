@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: deniseerjavec <deniseerjavec@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:37:38 by derjavec          #+#    #+#             */
-/*   Updated: 2024/11/18 15:08:16 by derjavec         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:52:44 by deniseerjav      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,26 @@ const char *BitcoinExchange::ErrorOpenFile::what() const throw()
 const char *BitcoinExchange:: InvalidData::what() const throw()
 {
      return ("Invalid format in data input");
+}
+
+BitcoinExchange::InvalidDate::InvalidDate(const std::string& date) throw(): _date(date)
+{
+     _message = "Error: bad input =>" + _date;
+}
+BitcoinExchange::InvalidDate::~InvalidDate() throw() {}
+const char *BitcoinExchange::InvalidDate::what() const throw()
+{
+    return _message.c_str();
+}
+
+const char *BitcoinExchange:: NegativeN::what() const throw()
+{
+     return ("Error: not a positive number");
+}
+
+const char *BitcoinExchange:: BigN::what() const throw()
+{
+     return ("Error: Value over 1000 dollars");
 }
 
 bool BitcoinExchange::ValidDate(std::string date)
@@ -84,17 +104,17 @@ void BitcoinExchange::loadDataBase(const std::string& file)
           float value;
           if (std::getline(iss, date, ',') && iss >> value && ValidDate(date))
           {
-               std::cout << date << " " << value << std::endl;
+             //  std::cout << date << " " << value << std::endl;
                data[date] = value;
           }      
           else
                throw InvalidData();
      }
-     std::map<std::string, float>::iterator it;
-     for (it = data.begin(); it != data.end(); it++)
-     {
-          std::cout << it->first << "   " << it->second << std::endl;
-     }
+     // std::map<std::string, float>::iterator it;
+     // for (it = data.begin(); it != data.end(); it++)
+     // {
+     //      std::cout << it->first << "   " << it->second << std::endl;
+     // }
      
 }
 
@@ -107,25 +127,42 @@ void BitcoinExchange::multiplyValues(const std::string& file)
      std::getline(infile, line);
      while (std::getline(infile, line))
      {
-          std::cout << line << std::endl;
-          std::istringstream iss(line);
-          std::string date;
-          float value;
-          if (std::getline(iss, date, '|') && iss >> value)
+          //std::cout << line << std::endl;
+          try
           {
-               date.erase(0, date.find_first_not_of(" \t"));
-               date.erase(date.find_last_not_of(" \t") + 1);
-               if (ValidDate(date) && ValidValue(value))
+               std::istringstream iss(line);
+               std::string date;
+               float value;
+               if (std::getline(iss, date, '|') && iss >> value)
                {
-                    std::map<std::string, float>::iterator it = data.lower_bound(date);
-                    float price = it->second;
-                    std::cout << it->first << "=>" << value << " = " << (price * value) << std::endl;
-               }
+                    date.erase(0, date.find_first_not_of(" \t"));
+                    date.erase(date.find_last_not_of(" \t") + 1);
+                    if (ValidDate(date) && ValidValue(value))
+                    {
+                         std::map<std::string, float>::iterator it = data.lower_bound(date);
+                         
+                         float price = it->second;
+                         std::cout << it->first << "=>" << value << " = " << (price * value) << std::endl;
+                    }
+                    else
+                    {
+                         if (!ValidDate(date))
+                              throw InvalidDate(date);
+                         else if (value < 0)
+                              throw NegativeN();
+                         else if (value > 1000)
+                              throw BigN();
+                         else
+                              throw InvalidData();
+                    }      
+               }      
                else
-                    throw InvalidData();
-               
-          }      
-          else
-               throw InvalidData();
+                    throw InvalidDate(date);
+          }
+          catch (const std::exception& e)
+          {
+               std::cerr << e.what() << std::endl;
+          }
+          
      }
 }
