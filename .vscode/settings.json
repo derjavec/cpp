@@ -87,6 +87,7 @@
         "cinttypes": "cpp",
         "typeindex": "cpp",
         "semaphore": "cpp",
-        "*.tpp": "cpp"
+        "*.tpp": "cpp",
+        "__tree": "cpp"
     }
 }
