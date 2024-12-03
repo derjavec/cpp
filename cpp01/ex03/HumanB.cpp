@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deniseerjavec <deniseerjavec@student.42    +#+  +:+       +#+        */
+/*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/10/18 15:07:34 by deniseerjav      ###   ########.fr       */
+/*   Updated: 2024/11/06 09:03:30 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name): name(name), weapon(nullptr) {}
+HumanB::HumanB(std::string name): name(name), weapon(NULL) {}
 
 void    HumanB::setWeapon(Weapon &new_weapon)
 {
     weapon = &new_weapon;
 }
+HumanB::~HumanB(){}
 
 void    HumanB::attack() const
 {

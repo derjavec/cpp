@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deniseerjavec <deniseerjavec@student.42    +#+  +:+       +#+        */
+/*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 09:46:16 by derjavec          #+#    #+#             */
-/*   Updated: 2024/10/18 16:34:39 by deniseerjav      ###   ########.fr       */
+/*   Updated: 2024/11/06 09:21:26 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-    std::string filename;
+    char *filename;
     std::string s1;
     std::string s2;
     std::string line;
@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
         std::cerr << "Error while opening infile" << std::endl;
         return (1);
     }
-    std::ofstream outfile(filename + ".replace");
+    std::string outfile_name((std::string)filename + ".replace");
+    std::ofstream outfile(outfile_name.c_str());
     if (!outfile.is_open())
     {
         std::cerr << "Error while creating outfile" << std::endl;
@@ -50,4 +51,5 @@ int main(int argc, char *argv[])
         mod_line = replace_strings(line, s1, s2);
         outfile << mod_line << std::endl;
     }
+    return (0);
 }

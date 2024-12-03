@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deniseerjavec <deniseerjavec@student.42    +#+  +:+       +#+        */
+/*   By: derjavec <derjavec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:33:31 by deniseerjav       #+#    #+#             */
-/*   Updated: 2024/10/16 14:04:32 by deniseerjav      ###   ########.fr       */
+/*   Updated: 2024/11/12 09:11:33 by derjavec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,15 +111,12 @@ void    Phonebook::searchContact() const
     }
     std::cout << "Enter the index of the contact to display: ";
     std::getline(std::cin, input);
-    try
-    {
-        index = std::stoi(input);
-    }
-    catch (std::exception &e)
+    std::stringstream conv(input);
+    if (!(conv >> index) || input.length() > 1)
     {
         std::cout << "Invalid index format." << std::endl;
         return ;
-    }
+    }    
     if (index < 0 || index >= contactCount)
     {
         std::cout << "Index out of range." << std::endl;
