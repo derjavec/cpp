@@ -20,6 +20,7 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#include <cmath>
 #include <climits>
 #include <ctime>
 #include <exception>

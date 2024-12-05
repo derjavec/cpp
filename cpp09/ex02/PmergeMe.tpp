@@ -69,21 +69,86 @@ int PmergeMe<T>::CreateConteiners(int argc, char **argv)
     }
     return (0);
 }
+
+template <typename T>
+std::vector<T> createGroups(std::vector<std::pair<int,int> > &pairs)
+{
+    std::vector<T> groups;
+    size_t  i;
+    int j;
+    int  p;
+    int     currentSize;
+    int     nextSize;
+    
+    i = 0;
+    currentSize = 2;
+    nextSize = 2;
+    p = 1;
+    while (i < pairs.size())
+    {
+        T group;
+        j = 0;
+        std::cout <<"current Size: " <<currentSize << std::endl;
+        while  (j < currentSize)
+        {
+            group.push_back(pairs[j + i].first);
+            j++;
+        }
+        std::cout <<"j: " <<j<< std::endl;
+        groups.push_back(group);
+        std::cout <<"next Size 1: " <<nextSize << std::endl;
+        nextSize = currentSize + nextSize;
+        std::cout <<"next Size 2: " <<nextSize << std::endl;
+        currentSize = nextSize - currentSize;
+        i += j;
+        p++;
+    }
+    return (groups);
+}
+
+template <typename T>
+T groupsSortedByIndex(std::vector<T> groups)
+{
+    size_t i;
+    int j;
+    T group;
+    T little;
+
+    i = 0;
+    while (i < groups.size())
+    {
+        group = groups[i];
+        j = group.size();
+        while (j > 0)
+        {
+            little.push_back(group[j]);
+            j--;
+        }
+        i++;
+    }
+    return (little);
+}
+
 template <typename T>
 void    MergeInsert(T& s, std::vector<std::pair<int,int> > &pairs)
 {
-    size_t i;
-    
-    i = 0;
-    while (i < pairs.size())
+    std::vector<T> groups;
+    T little;
+
+    (void)s;
+    groups = createGroups<T>(pairs);
+    for (size_t i = 0; i < groups.size(); i++)
     {
-        if (pairs[i].first != INT_MIN)
+        T group = groups[i];
+        std::cout << "size: "<< group.size()<<std::endl;
+        for (size_t j = 0; j < group.size(); j++)
         {
-            typename T::iterator pos = std::lower_bound(s.begin(), s.end(), pairs[i].first);
-            s.insert(pos, pairs[i].first);
-        } 
-        i++;
+            std::cout << group[j]<< std::endl;;
+        }
+        std::cout << " "<<std::endl;
     }
+    little = groupsSortedByIndex<T>(groups);
+
 }
 
 template <typename T>
@@ -160,6 +225,6 @@ T PmergeMe<T>::fordJohnsonSort(T& cont)
     // {
     //     std::cout << sortedS[i]  << std::endl;
     // }
-    MergeInsert(sortedS, pairs); 
+    MergeInsert<T>(sortedS, pairs); 
     return (sortedS);
 }
