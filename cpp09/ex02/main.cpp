@@ -20,39 +20,43 @@ int main(int argc, char **argv)
         return (1);
     }
     
-    PmergeMe obj;
+    PmergeMe<std::vector<int> > vec;
     size_t i;
-    if (obj.CreateConteiners(argc, argv) != 0)
+    if (vec.CreateConteiners(argc, argv) != 0)
         return (1);
     std::cout << "Before : ";
     i = 0;
-    while (i < obj.getVec().size())
+    while (i < vec.getCont().size())
     {
-        std::cout << obj.getVec()[i];
+        std::cout << vec.getCont()[i];
         std::cout << " ";
         i++;
     }
     std::cout << std::endl;
     clock_t start_vec = clock();
-    obj.fordJohnsonSort(obj.getVec());
+    vec.setCont(vec.fordJohnsonSort(vec.getCont()));
     clock_t end_vec = clock();
     std::cout << "After : ";
     i = 0;
-    while (i < obj.getVec().size())
+    while (i < vec.getCont().size())
     {
-        std::cout << obj.getVec()[i];
+        std::cout << vec.getCont()[i];
         std::cout << " ";
         i++;
     }
     std::cout << std::endl;
-    std::cout << "Time to process a range of " << obj.getVec().size() << " elements with std::vector : " ;
+    std::cout << "Time to process a range of " << vec.getCont().size() << " elements with std::vector : " ;
     double time_vec = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC;
     std::cout << std::fixed << std::setprecision(6) << time_vec << " s" << std::endl;
+
+    PmergeMe<std::deque<int> > deq;
+    if (deq.CreateConteiners(argc, argv) != 0)
+        return (1);
     clock_t start_deq = clock();
-    obj.fordJohnsonSort(obj.getDeq());
+    deq.setCont(deq.fordJohnsonSort(deq.getCont()));
     clock_t end_deq = clock();
     std::cout << std::endl;
-    std::cout << "Time to process a range of " << obj.getDeq().size() << " elements with std::deque : " ;
+    std::cout << "Time to process a range of " << deq.getCont().size() << " elements with std::deque : " ;
     double time_deq = static_cast<double>(end_deq - start_deq) / CLOCKS_PER_SEC;
     std::cout << std::fixed << std::setprecision(6) << time_deq << " s" << std::endl;
 }

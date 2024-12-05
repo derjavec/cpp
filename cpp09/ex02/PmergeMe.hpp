@@ -20,26 +20,24 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
-#include <chrono>
+#include <climits>
+#include <ctime>
 #include <exception>
 
-
+template <typename T>
 class PmergeMe
 {  
     private :
-        std::vector<int> vec;
-        std::deque<int> deq;
+        T conteiner;
     public :
           PmergeMe();
           ~PmergeMe();
           PmergeMe(const PmergeMe& other);
           PmergeMe& operator=(const PmergeMe& other);
           int CreateConteiners(int argc, char **argv);
-          void fordJohnsonSort(std::vector<int>& data);
-          void fordJohnsonSort(std::deque<int>& data);
-          std::vector<int>& getVec();
-          std::deque<int>& getDeq();
+          T fordJohnsonSort(T& data);
+          T& getCont();
+          void setCont(const T& newConteiner);
 };
-void CocktailSort(std::vector<int>& vec);
-void    MergeInsert(std::vector<int>& big, std::vector<int>& small);
+#include "PmergeMe.tpp"
 #endif
