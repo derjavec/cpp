@@ -24,6 +24,7 @@
 #include <climits>
 #include <ctime>
 #include <exception>
+#include "utils.hpp"
 
 template <typename T>
 class PmergeMe
@@ -36,9 +37,23 @@ class PmergeMe
           PmergeMe(const PmergeMe& other);
           PmergeMe& operator=(const PmergeMe& other);
           int CreateConteiners(int argc, char **argv);
-          T fordJohnsonSort(T& data);
+          T fordJohnsonSort(T& data, bool topLevel);
           T& getCont();
           void setCont(const T& newConteiner);
 };
+template <typename T>
+std::vector<T> createGroups(std::vector<std::pair<int,int> > &pairs);
+template <typename T>
+T groupsSortedByIndex(std::vector<T> groups);
+template <typename T>
+int lookForIndexInBig(int bigElement, T& big);
+template <typename T>
+std::vector<std::pair<int,int> > createPairs(T& cont);
+template <typename T>
+T getBigestelements(std::vector<std::pair<int,int> > &pairs);
+
 #include "PmergeMe.tpp"
+#include "utils.tpp"
+#include "fordJohnsonSort.tpp"
+
 #endif

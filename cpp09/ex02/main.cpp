@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     }
     std::cout << std::endl;
     clock_t start_vec = clock();
-    vec.setCont(vec.fordJohnsonSort(vec.getCont()));
+    vec.setCont(vec.fordJohnsonSort(vec.getCont(), true));
     clock_t end_vec = clock();
     std::cout << "After : ";
     i = 0;
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     if (deq.CreateConteiners(argc, argv) != 0)
         return (1);
     clock_t start_deq = clock();
-    deq.setCont(deq.fordJohnsonSort(deq.getCont()));
+    deq.setCont(deq.fordJohnsonSort(deq.getCont(), true));
     clock_t end_deq = clock();
     std::cout << std::endl;
     std::cout << "Time to process a range of " << deq.getCont().size() << " elements with std::deque : " ;
