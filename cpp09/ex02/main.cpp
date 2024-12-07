@@ -19,7 +19,11 @@ int main(int argc, char **argv)
         std::cout << "Wrong amount of arguments" << std::endl;
         return (1);
     }
-    
+    if (argc > 3001)
+    {
+        std::cout << "Too many arguments" << std::endl;
+        return (1);
+    }
     PmergeMe<std::vector<int> > vec;
     size_t i;
     if (vec.CreateConteiners(argc, argv) != 0)

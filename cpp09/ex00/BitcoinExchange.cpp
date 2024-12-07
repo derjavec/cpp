@@ -141,6 +141,8 @@ void BitcoinExchange::multiplyValues(const std::string& file)
                     {
                          std::map<std::string, float>::iterator it = data.lower_bound(date);
                          
+                         if (it == data.end())
+                              it--;
                          float price = it->second;
                          std::cout << it->first << "=>" << value << " = " << (price * value) << std::endl;
                     }
